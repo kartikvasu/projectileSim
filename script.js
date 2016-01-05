@@ -1,3 +1,6 @@
+var w = window.innerWidth;
+var h = window.innerHeight;
+
 $(document).ready(function(){
   var canvas = $('#canvas');
   //Creation of the ball element
@@ -8,16 +11,17 @@ $(document).ready(function(){
   ball.css({"background-color":"red",
     "border-radius":"50%",
     "width":"50px",
-    "height":"50px"});
+    "height":"50px",
+    "margin-top": 0.90 * h + "px"});
 
   setInterval(animateBall, 50);
   setInterval(accelerateBall, 50);
 });
 
-var verticalVelocity = 4;
+var verticalVelocity = -20;
 
 var accelerateBall = function(){
-  verticalVelocity = verticalVelocity + 0.2;
+  verticalVelocity = verticalVelocity + 0.5;
 }
 
 var animateBall = function(){
