@@ -3,13 +3,14 @@ var h = window.innerHeight;
 
 var constHorizVelocity = 1.75;
 var constVertVelocity = -1.75;
-
 var updateInterval = 5;
-var verticalVelocity = constVertVelocity;
-var horizontalVelocity = constHorizVelocity;
 var verticalAcceleration = 0.005;
 
+var verticalVelocity = constVertVelocity;
+var horizontalVelocity = constHorizVelocity;
+
 $(document).ready(function(){
+
   var canvas = $('#canvas');
   var ballData = $('#ball-data');
   //Creation of the ball element
@@ -17,21 +18,23 @@ $(document).ready(function(){
   canvas.css({
     "height" : 0.75 * h + "px"
   });
+
   var ball = $('#ball');
   ball.css({"background-color":"red",
     "border-radius":"50%",
     "width":"50px",
     "height":"50px",
-    //"margin-top": 0.75 * h + "px",
     "z-index": "5"});
 
-    ball.offset({top: $('#canvas').height(), left: 0});
+    ball.offset(
+      {top: 1.15 * $('#canvas').height(),
+      left: 0});
 
   ball.click(function(){
     setInterval(animateBall, updateInterval);
     setInterval(accelerateBall, updateInterval);
     setInterval(changeData, updateInterval);
-  })
+  });
 });
 
 //used to update the data of the ball
@@ -52,7 +55,7 @@ var animateBall = function(){
   //bounce the ball if it reaches the bottom of the screen
   var h = $('#canvas').height();
 
-  if(findCurHeight() >= h){
+  if(findCurHeight() >= 1.15 * h){
     verticalVelocity = constVertVelocity;
   }
 
@@ -77,7 +80,8 @@ var animateBall = function(){
   */
 
   var x = $('#ball').offset();
-  $('#ball').offset({top: x.top + verticalVelocity,
+  $('#ball').offset(
+    {top: x.top + verticalVelocity,
     left: x.left + horizontalVelocity});
 
 }
