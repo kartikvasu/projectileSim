@@ -59,7 +59,6 @@ var animateBall = function(){
     verticalVelocity = constVertVelocity;
   }
 
-
   var w = $('#canvas').width();
   //bouncing off the wall if it reaches the right end
   if(findCurDist() >= w){
@@ -70,43 +69,20 @@ var animateBall = function(){
     horizontalVelocity = constHorizVelocity;
   }
 
-  /*
-  $('#ball').css({
-    //number of pixels the ball moves horizontally every 50 miliseconds
-    "margin-left": '+=' + horizontalVelocity + 'px',
-    //number of pixels the ball moves vertically every 50 miliseconds
-    "margin-top": '+=' + verticalVelocity + 'px'
-  });
-  */
-
   var x = $('#ball').offset();
   $('#ball').offset(
     {top: x.top + verticalVelocity,
     left: x.left + horizontalVelocity});
-
 }
 
 //function used to find the current height of the ball
 var findCurHeight = function(){
-
-  /*
-  var height = $('#ball').css("margin-top");
-  length = height.length;
-  height = height.slice(0, length - 2);
-  return height;
-  */
   var x = $('#ball').offset();
   return x.top;
 }
 
 //function used to find the distance of the ball from the left wall
 var findCurDist = function(){
-  /*
-  var dist = $('#ball').css("margin-left");
-  length = dist.length;
-  dist = dist.slice(0, length - 2);
-  return dist;
-  */
   var x = $('#ball').offset();
   return x.left;
 }
