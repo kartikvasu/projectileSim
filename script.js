@@ -5,6 +5,8 @@ var constHorizVelocity = 1.75;
 var constVertVelocity = -1.75;
 var updateInterval = 5;
 var verticalAcceleration = 0.005;
+var cRestitution = 1;
+var bounces = 0;
 
 var verticalVelocity = constVertVelocity;
 var horizontalVelocity = constHorizVelocity;
@@ -32,13 +34,13 @@ $(document).ready(function(){
 
   ball.click(function(){
     setInterval(animateBall, updateInterval);
-    setInterval(accelerateBall, updateInterval);
-    setInterval(changeData, updateInterval);
+    //setInterval(accelerateBall, updateInterval);
+    setInterval(changeDisplayData, updateInterval);
   });
 });
 
 //used to update the data of the ball
-var changeData = function(){
+var changeDisplayData = function(){
   var ballData = $('#ball-data');
   ballData.empty();
   ballData.append("<div id = 'container'>BALL DATA<br>Vertical Velocity: " + verticalVelocity
@@ -53,10 +55,11 @@ var accelerateBall = function(){
 //function that changes the css position of the ball every "updateInterval" milliseconds
 var animateBall = function(){
   //bounce the ball if it reaches the bottom of the screen
+  accelerateBall();
   var h = $('#canvas').height();
 
   if(findCurHeight() >= 1.15 * h){
-    verticalVelocity = constVertVelocity;
+    verticalVelocity = cRestitution * constVertVelocity;
   }
 
   var w = $('#canvas').width();
@@ -70,9 +73,11 @@ var animateBall = function(){
   }
 
   var x = $('#ball').offset();
+
   $('#ball').offset(
     {top: x.top + verticalVelocity,
     left: x.left + horizontalVelocity});
+
 }
 
 //function used to find the current height of the ball

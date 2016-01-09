@@ -8,12 +8,19 @@ h1 {
 }
 
 body {
-  background-color: #99ff99;
+  /* background-color: #99ff99; */
   color: #0066ff;
   font-family: myFont;
 }
 
-#canvas {
+/*
+#Canvas {
   background-color: #99ffcc;
   width: inherit;
+}
+*/
+
+#myCanvas {
+  border:1px solid #000000;
+  background-color: #66ccff;
 }
