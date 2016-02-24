@@ -1,12 +1,12 @@
 //all physical quantities are in terms of 'per milisecond'
 //all global variable initializations and function calls
 //the below variables can be taken as input
-var h = window.innerHeight;
-var w = window.innerWidth;
-var constXVelocity = 1.5;
-var constYVelocity = 2;
-var yAccelerate = -0.009;
-var groundRestit = 0.9;
+var h = window.innerHeight
+  , w = window.innerWidth
+  , constXVelocity = 1.5
+  , constYVelocity = 2
+  , yAccelerate = -0.009
+  , groundRestit = 0.9;
 
 //everything below here is abstracted from the viewer
 var bounces = 0;
